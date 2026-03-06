@@ -5,8 +5,9 @@ require('dotenv').config(); // kalau pakai .env
 const rateLimit = require('express-rate-limit')
 
 const limit = rateLimit({
-  windowMs: process.env.RATE_LIMIT * 60 * 1000,
-  max: process.env.BATAS_LIMIT
+  windowMs: parseInt(process.env.RATE_LIMIT) * 60 * 1000,
+  max: parseInt(process.env.BATAS_LIMIT),
+  message: `Batasnya ${process.env.BATAS_LIMIT} per ${process.env.RATE_LIMIT} menit bg`
 })
 
 const app = express();
